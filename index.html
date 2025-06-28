@@ -1,0 +1,53 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Caçada Trigonométrica - Início</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Caçada Trigonométrica</h1>
+    <form id="grupoForm">
+      <label for="nomeGrupo">Selecione o grupo:</label>
+      <select id="nomeGrupo" required>
+        <option value="">-- Escolha um grupo --</option>
+        <option value="Grupo 1">Grupo 1</option>
+        <option value="Grupo 2">Grupo 2</option>
+        <option value="Grupo 3">Grupo 3</option>
+        <option value="Grupo 4">Grupo 4</option>
+        <option value="Grupo 5">Grupo 5</option>
+        <option value="Grupo 6">Grupo 6</option>
+        <option value="Grupo 7">Grupo 7</option>
+        <option value="Grupo 8">Grupo 8</option>
+        <option value="Grupo 9">Grupo 9</option>
+      </select>
+
+      <label for="turma">Selecione a turma:</label>
+      <select id="turma" required>
+        <option value="">-- Escolha uma turma --</option>
+        <option value="3º A">3º A</option>
+        <option value="3º B">3º B</option>
+        <option value="3º C">3º C</option>
+        <option value="3º D">3º D</option>
+      </select>
+
+      <label>Integrantes:</label>
+      <div class="integrantes">
+        <input type="text" placeholder="Integrante 1" class="integrante">
+        <input type="text" placeholder="Integrante 2" class="integrante">
+        <input type="text" placeholder="Integrante 3" class="integrante">
+        <input type="text" placeholder="Integrante 4" class="integrante">
+        <input type="text" placeholder="Integrante 5" class="integrante">
+        <input type="text" placeholder="Integrante 6" class="integrante">
+      </div>
+
+      <button type="submit" id="iniciarBtn" disabled>Iniciar</button>
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

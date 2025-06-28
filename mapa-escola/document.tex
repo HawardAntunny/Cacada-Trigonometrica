@@ -1,0 +1,37 @@
+\documentclass[a4paper]{article}
+\usepackage[margin=1.5cm]{geometry}
+\usepackage{graphicx}
+\usepackage{pgfplots}
+\usepackage{tikz}
+\pgfplotsset{compat=1.18}
+\usepackage{caption}
+
+\begin{document}
+	
+	\begin{center}
+		{\LARGE \textbf{Mapa da Escola com Réguas de Escala}}
+		
+		\vspace{1cm}
+		
+		\begin{tikzpicture}
+			\begin{axis}[
+				width=18cm,
+				height=24cm,
+				xlabel={cm},
+				ylabel={cm},
+				xtick={0,1,...,18},
+				ytick={012,...,24},
+				axis lines=left,
+				xmin=0, xmax=18,
+				ymin=0, ymax=24,
+				unit vector ratio=1 1 1,
+				enlargelimits=false,
+				tick label style={font=\small},
+				axis on top
+				]
+				\addplot graphics[xmin=0,xmax=18,ymin=0,ymax=24] {mapa-escola.png};
+			\end{axis}
+		\end{tikzpicture}
+	\end{center}
+	
+\end{document}

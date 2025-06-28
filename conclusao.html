@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Parabéns, Exploradores!</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      text-align: center;
+      background-color: #f2f9ff;
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      max-width: 600px;
+      margin: 60px auto;
+      padding: 20px;
+      border-radius: 10px;
+      background-color: white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+
+    h1 {
+      font-size: 2em;
+      color: #2e7d32;
+    }
+
+    p {
+      font-size: 1.2em;
+      margin-top: 20px;
+    }
+
+    .emoji {
+      font-size: 3em;
+      margin-top: 20px;
+    }
+
+    .grupo {
+      font-weight: bold;
+      color: #1a237e;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🏁 Fim da Caçada Trigonométrica!</h1>
+    <p>Parabéns, <span class="grupo" id="infoGrupo"></span>!</p>
+    <p>Vocês concluíram o desafio com coragem, raciocínio e trabalho em equipe!</p>
+    <p class="emoji">🎉👏🔺</p>
+    <p>Agora é hora de compartilhar as descobertas e celebrar com os colegas.</p>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const turma = localStorage.getItem("turmaAtual");
+      const grupo = localStorage.getItem("grupoAtual");
+      const spanGrupo = document.getElementById("infoGrupo");
+
+      if (turma && grupo) {
+        spanGrupo.textContent = `Grupo ${grupo} da Turma ${turma}`;
+      } else {
+        spanGrupo.textContent = "Exploradores!";
+      }
+    });
+  </script>
+</body>
+</html>

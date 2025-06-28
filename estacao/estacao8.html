@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Estação 8 - Mastro da Bandeira</title>
+  <link rel="stylesheet" href="../style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1 id="tituloEstacao">Estação 8 - Mastro da Bandeira</h1>
+    <p id="coordenadaEstacao">Coordenada: (12, 18)</p>
+
+    <div id="descricaoEstacao">
+      <p>
+        Um observador está olhando para o topo de um mastro de bandeira. A base do mastro está a uma distância conhecida do observador.
+      </p>
+      <p>
+        O ângulo de elevação do olhar do observador até o topo do mastro é de <strong><span id="anguloTexto"></span>°</strong>.
+      </p>
+      <p>
+        Com base na distância entre o observador e a base do mastro (<strong><span id="baseTexto"></span> metros</strong>), determine a altura do mastro.
+      </p>
+      <p><em>(Dê sua resposta com duas casas decimais arredondando e use ponto como separador decimal)</em></p>
+    </div>
+
+    <label for="resposta">Altura do mastro (em metros):</label>
+    <input type="text" id="resposta" placeholder="Ex: 3.25" />
+    <button id="btnVerificar">Verificar</button>
+
+    <p id="feedback"></p>
+  </div>
+
+  <script src="estacao8.js"></script>
+</body>
+</html>
+
