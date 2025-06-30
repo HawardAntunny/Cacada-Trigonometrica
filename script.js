@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("grupoAtual", grupo.nomeGrupo);
 
       // Enviar para Google Sheets
-        const webhookURL = "https://script.google.com/macros/s/AKfycbyebVYdt7QVVHObJ4wwwrFUOO2-9nlHByYBmYNEblsZh6Sh4PebpnJmu7tk04gYQ11Gww/exec";
+        const webhookURL = "https://script.google.com/macros/s/AKfycbwKjA3tKxphFq8bLWJdNEiVAYemX0KIr1vr3YlBUf4sl2q0rBTxRpn9wZKnyGOabJ3KoQ/exec";
 
         const dados = new URLSearchParams({
           turma: turmaValor,
