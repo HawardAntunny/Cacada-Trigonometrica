@@ -41,6 +41,31 @@ document.addEventListener("DOMContentLoaded", () => {
       localStorage.setItem("turmaAtual", turmaValor);
       localStorage.setItem("grupoAtual", grupo.nomeGrupo);
 
+      // Enviar para Google Sheets
+        const webhookURL = "https://script.google.com/macros/s/AKfycbyebVYdt7QVVHObJ4wwwrFUOO2-9nlHByYBmYNEblsZh6Sh4PebpnJmu7tk04gYQ11Gww/exec";
+
+        const dados = new URLSearchParams({
+          turma: turmaValor,
+          grupo: grupo.nomeGrupo,
+          aluno1: grupo.integrantes[0] || "",
+          aluno2: grupo.integrantes[1] || "",
+          aluno3: grupo.integrantes[2] || "",
+          aluno4: grupo.integrantes[3] || "",
+          aluno5: grupo.integrantes[4] || "",
+          aluno6: grupo.integrantes[5] || ""
+        });
+
+        fetch(webhookURL, {
+          method: "POST",
+          headers: { "Content-Type": "application/x-www-form-urlencoded" },
+          body: dados.toString()
+        })
+        .catch((error) => {
+          console.error("Erro ao enviar para o Google Sheets:", error);
+        });
+
+
+
       window.location.href = "jogo.html";
     });
   }
