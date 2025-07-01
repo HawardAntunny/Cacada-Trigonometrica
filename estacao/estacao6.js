@@ -2,13 +2,12 @@ document.addEventListener("DOMContentLoaded", () => {
   const respostaInput = document.getElementById("resposta");
   const btnVerificar = document.getElementById("btnVerificar");
   const feedback = document.getElementById("feedback");
-  const diagonalTexto = document.getElementById("diagonalTexto");
+  const baseDegrauSpan = document.getElementById("baseDegrau");
 
   const turma = localStorage.getItem("turmaAtual");
   const grupo = localStorage.getItem("grupoAtual");
   const chaveEstacaoAtual = `estacaoAtual_${turma}_${grupo}`;
   const chaveVisitadas = `estacoesVisitadas_${turma}_${grupo}`;
-
   const nomeEstacao = "Estação 6";
 
   const estacoes = [
@@ -23,24 +22,19 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Estação 9", arquivo: "estacao9.html" }
   ];
 
-  const base = 2.4;
+  const altura = 90; // em cm
+  const opcoes = [28, 30, 26, 32, 27]; // base de cada degrau em cm
 
-  const opcoes = [
-    { diagonal: 3 },
-    { diagonal: 3.2 },
-    { diagonal: 2.8 },
-    { diagonal: 3.4 },
-    { diagonal: 3.1 }
-  ];
+  const baseDegrau = opcoes[Math.floor(Math.random() * opcoes.length)];
+  baseDegrauSpan.textContent = baseDegrau;
 
-  const sorteada = opcoes[Math.floor(Math.random() * opcoes.length)];
-  diagonalTexto.textContent = sorteada.diagonal;
-
-  const altura = Math.sqrt(sorteada.diagonal ** 2 - base ** 2).toFixed(2);
+  const baseTotal = baseDegrau * 8;
+  const hipotenusa = Math.sqrt(altura ** 2 + baseTotal ** 2);
+  const respostaCorreta = (hipotenusa / 100).toFixed(2); // convertendo para metros
 
   btnVerificar.addEventListener("click", () => {
-    const respostaUsuario = respostaInput.value.trim().replace(",", ".");
-    if (parseFloat(respostaUsuario).toFixed(2) === altura) {
+    const resposta = respostaInput.value.trim().replace(",", ".");
+    if (parseFloat(resposta).toFixed(2) === respostaCorreta) {
       feedback.textContent = "✔️ Resposta correta! Vamos para a próxima estação.";
       feedback.style.color = "green";
 

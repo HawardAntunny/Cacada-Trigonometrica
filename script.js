@@ -86,7 +86,7 @@ document.addEventListener("DOMContentLoaded", () => {
       { nome: "Estação 3", coord: "(11, 0)", arquivo: "estacao3.html" },
       { nome: "Estação 4", coord: "(13, 8.5)", arquivo: "estacao4.html" },
       { nome: "Estação 5", coord: "(3, 10)", arquivo: "estacao5.html" },
-      { nome: "Estação 6", coord: "(4, 14)", arquivo: "estacao6.html" },
+      { nome: "Estação 6", coord: "(11, 13)", arquivo: "estacao6.html" },
       { nome: "Estação 7", coord: "(13, 15)", arquivo: "estacao7.html" },
       { nome: "Estação 8", coord: "(12, 18)", arquivo: "estacao8.html" },
       { nome: "Estação 9", coord: "(16, 19)", arquivo: "estacao9.html" }

@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const mSpan = document.getElementById("m");
-  const nSpan = document.getElementById("n");
+  const alturaSpan = document.getElementById("altura");
+  const distanciaSpan = document.getElementById("distancia");
   const resposta1 = document.getElementById("resposta1");
   const resposta2 = document.getElementById("resposta2");
   const btnVerificar = document.getElementById("btnVerificar");
@@ -24,34 +24,34 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Estação 9", arquivo: "estacao9.html" }
   ];
 
+  // POSTE BAIXO COM CORDAS PEQUENAS
   const opcoes = [
-    { m: 4, n: 6 },
-    { m: 5, n: 5 },
-    { m: 3, n: 7 },
-    { m: 2, n: 8 },
-    { m: 6, n: 9 }
+    { altura: 2, base: 2.5 },
+    { altura: 2.2, base: 2.8 },
+    { altura: 2.5, base: 3 },
+    { altura: 2.8, base: 3.2 },
+    { altura: 3, base: 3.5 }
   ];
 
   const sorteada = opcoes[Math.floor(Math.random() * opcoes.length)];
-  const a = sorteada.m + sorteada.n;
-  const c = parseFloat(Math.sqrt(a * sorteada.n).toFixed(2));
-  const b = parseFloat(Math.sqrt(a * sorteada.m).toFixed(2));
+  const cateto1 = sorteada.altura;
+  const cateto2 = sorteada.base;
+  const hipotenusa1 = Math.sqrt(cateto1 ** 2 + cateto2 ** 2);
+  const hipotenusa2 = Math.sqrt(cateto2 ** 2 + cateto1 ** 2); // mesma coisa, redundante mas didático
 
-  mSpan.textContent = sorteada.m;
-  nSpan.textContent = sorteada.n;
+  alturaSpan.textContent = cateto1;
+  distanciaSpan.textContent = cateto2;
 
   btnVerificar.addEventListener("click", () => {
     const r1 = parseFloat(resposta1.value.trim().replace(",", "."));
     const r2 = parseFloat(resposta2.value.trim().replace(",", "."));
 
     const respostas = [parseFloat(r1.toFixed(2)), parseFloat(r2.toFixed(2))];
-    const esperadas = [b, c];
+    const esperadas = [parseFloat(hipotenusa1.toFixed(2)), parseFloat(hipotenusa2.toFixed(2))];
 
-    const todasPresentes = esperadas.every(e =>
-      respostas.includes(e)
-    );
+    const corretas = esperadas.every(e => respostas.includes(e));
 
-    if (todasPresentes) {
+    if (corretas) {
       feedback.textContent = "✔️ Respostas corretas!";
       feedback.style.color = "green";
 
@@ -81,4 +81,3 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
