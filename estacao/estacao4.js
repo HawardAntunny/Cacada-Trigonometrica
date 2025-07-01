@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const respostaInput = document.getElementById("resposta");
   const btnVerificar = document.getElementById("btnVerificar");
   const feedback = document.getElementById("feedback");
-  const anguloTexto = document.getElementById("anguloTexto");
+  const anguloTexto = document.getElementById("anguloTexto"); // não usado, mas necessário para compatibilidade
 
   const turma = localStorage.getItem("turmaAtual");
   const grupo = localStorage.getItem("grupoAtual");
@@ -22,20 +22,12 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Estação 9", arquivo: "estacao9.html" }
   ];
 
-  const AC = 4; // distância do observador até o mastro
-
-  const opcoes = [
-    { angulo: 30, resposta: (AC * 0.58).toFixed(2) },
-    { angulo: 45, resposta: (AC * 1).toFixed(2) },
-    { angulo: 60, resposta: (AC * 1.73).toFixed(2) }
-  ];
-
-  const sorteada = opcoes[Math.floor(Math.random() * opcoes.length)];
-  const respostaCorreta = sorteada.resposta;
-  anguloTexto.textContent = sorteada.angulo;
+  // Cálculo: caminho mais curto = √(14² + 10² + 7²) = √(196 + 100 + 49) = √345 ≈ 18.57
+  const respostaCorreta = (Math.sqrt(14 * 14 + 10 * 10 + 7 * 7)).toFixed(2); // 18.57
 
   btnVerificar.addEventListener("click", () => {
     const respostaUsuario = respostaInput.value.trim().replace(",", ".");
+
     if (parseFloat(respostaUsuario).toFixed(2) === respostaCorreta) {
       feedback.textContent = "✔️ Resposta correta! Vamos para a próxima estação.";
       feedback.style.color = "green";

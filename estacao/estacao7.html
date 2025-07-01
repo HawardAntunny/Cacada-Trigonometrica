@@ -11,20 +11,17 @@
     <h1>Estação 7 - Poste de Luz</h1>
     <p id="coordenadaEstacao">Coordenada: (13, 15)</p>
     <p>
-      Um pequeno poste de luz está sendo sustentado por duas cordas que vão do topo até o chão, formando um triângulo retângulo com o solo.<br><br>
+      Um poste de luz está preso por duas cordas até o solo, formando triângulos retângulos.<br><br>
       Sabendo que:<br>
-      - Altura do poste = <strong><span id="altura"></span> m</strong><br>
-      - Distância do poste até os pontos de fixação no solo = <strong><span id="distancia"></span> m</strong><br><br>
-      Determine os comprimentos das duas cordas. (Arredonde para duas casas decimais)
+      - Uma corda vai do topo do poste até o ponto B, medindo <strong><span id="corda1"></span> m</strong><br>
+      - Outra corda vai até o ponto C, medindo <strong><span id="corda2"></span> m</strong><br>
+      - A distância entre os pontos B e C forma um ângulo de 90° no poste.<br><br>
+      Determine a distância entre os pontos B e C no chão (em metros), com duas casas decimais.
     </p>
 
-    <label for="resposta1">Comprimento da 1ª corda:</label>
-    <input type="text" id="resposta1" />
-
-    <label for="resposta2">Comprimento da 2ª corda:</label>
-    <input type="text" id="resposta2" />
-
-    <p><strong>Dica:</strong> Use o Teorema de Pitágoras e arredonde para duas casas decimais. Ex: 5,944 = 5,94 | 5,945 = 5,95</p>
+    <label for="resposta">Distância BC:</label>
+    <input type="text" id="resposta" />
+    <p><strong>Dica:</strong> Use o Teorema de Pitágoras e <em>arredonde</em> para duas casas decimais.</p>
 
     <button id="btnVerificar">Verificar</button>
     <p id="feedback"></p>
@@ -33,3 +30,4 @@
   <script src="estacao7.js"></script>
 </body>
 </html>
+

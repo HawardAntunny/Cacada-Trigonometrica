@@ -1,8 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-  const alturaSpan = document.getElementById("altura");
-  const distanciaSpan = document.getElementById("distancia");
-  const resposta1 = document.getElementById("resposta1");
-  const resposta2 = document.getElementById("resposta2");
+  const corda1Span = document.getElementById("corda1");
+  const corda2Span = document.getElementById("corda2");
+  const respostaInput = document.getElementById("resposta");
   const btnVerificar = document.getElementById("btnVerificar");
   const feedback = document.getElementById("feedback");
 
@@ -24,35 +23,29 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Estação 9", arquivo: "estacao9.html" }
   ];
 
-  // POSTE BAIXO COM CORDAS PEQUENAS
+  // cordas pequenas, poste baixo
   const opcoes = [
-    { altura: 2, base: 2.5 },
-    { altura: 2.2, base: 2.8 },
-    { altura: 2.5, base: 3 },
-    { altura: 2.8, base: 3.2 },
-    { altura: 3, base: 3.5 }
+    { corda1: 2.5, corda2: 3 },
+    { corda1: 3, corda2: 4 },
+    { corda1: 2.8, corda2: 3.2 },
+    { corda1: 3.5, corda2: 3.8 },
+    { corda1: 2.6, corda2: 2.9 }
   ];
 
   const sorteada = opcoes[Math.floor(Math.random() * opcoes.length)];
-  const cateto1 = sorteada.altura;
-  const cateto2 = sorteada.base;
-  const hipotenusa1 = Math.sqrt(cateto1 ** 2 + cateto2 ** 2);
-  const hipotenusa2 = Math.sqrt(cateto2 ** 2 + cateto1 ** 2); // mesma coisa, redundante mas didático
+  const h1 = sorteada.corda1;
+  const h2 = sorteada.corda2;
+  const distanciaBC = Math.sqrt(h1 * h1 + h2 * h2);
+  const distanciaEsperada = parseFloat(distanciaBC.toFixed(2));
 
-  alturaSpan.textContent = cateto1;
-  distanciaSpan.textContent = cateto2;
+  corda1Span.textContent = h1;
+  corda2Span.textContent = h2;
 
   btnVerificar.addEventListener("click", () => {
-    const r1 = parseFloat(resposta1.value.trim().replace(",", "."));
-    const r2 = parseFloat(resposta2.value.trim().replace(",", "."));
+    const resposta = parseFloat(respostaInput.value.trim().replace(",", "."));
 
-    const respostas = [parseFloat(r1.toFixed(2)), parseFloat(r2.toFixed(2))];
-    const esperadas = [parseFloat(hipotenusa1.toFixed(2)), parseFloat(hipotenusa2.toFixed(2))];
-
-    const corretas = esperadas.every(e => respostas.includes(e));
-
-    if (corretas) {
-      feedback.textContent = "✔️ Respostas corretas!";
+    if (parseFloat(resposta.toFixed(2)) === distanciaEsperada) {
+      feedback.textContent = "✔️ Resposta correta!";
       feedback.style.color = "green";
 
       let visitadas = JSON.parse(localStorage.getItem(chaveVisitadas)) || [];
@@ -76,7 +69,7 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = `./${proxima.arquivo}`;
       }, 1500);
     } else {
-      feedback.textContent = "❌ Respostas incorretas. Tente novamente.";
+      feedback.textContent = "❌ Resposta incorreta. Tente novamente.";
       feedback.style.color = "red";
     }
   });
