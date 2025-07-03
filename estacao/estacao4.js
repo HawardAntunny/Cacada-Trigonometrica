@@ -2,7 +2,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const respostaInput = document.getElementById("resposta");
   const btnVerificar = document.getElementById("btnVerificar");
   const feedback = document.getElementById("feedback");
-  const anguloTexto = document.getElementById("anguloTexto"); // não usado, mas necessário para compatibilidade
+  const anguloTexto = document.getElementById("anguloTexto"); // compatibilidade
+
+  const bcSpan = document.getElementById("bc");
+  const deSpan = document.getElementById("de");
+  const efSpan = document.getElementById("ef");
 
   const turma = localStorage.getItem("turmaAtual");
   const grupo = localStorage.getItem("grupoAtual");
@@ -22,13 +26,30 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Estação 9", arquivo: "estacao9.html" }
   ];
 
-  // Cálculo: caminho mais curto = √(14² + 10² + 7²) = √(196 + 100 + 49) = √345 ≈ 18.57
-  const respostaCorreta = (Math.sqrt(14 * 14 + 10 * 10 + 7 * 7)).toFixed(2); // 18.57
+  const opcoes = [
+    { bc: 1.2, de: 1.5, ef: 2.0 },
+    { bc: 1.0, de: 1.0, ef: 1.5 },
+    { bc: 1.3, de: 1.4, ef: 1.2 },
+    { bc: 1.1, de: 1.6, ef: 1.3 },
+    { bc: 1.5, de: 1.2, ef: 1.8 }
+  ];
+
+  const sorteada = opcoes[Math.floor(Math.random() * opcoes.length)];
+  const bc = sorteada.bc;
+  const de = sorteada.de;
+  const ef = sorteada.ef;
+
+  bcSpan.textContent = bc;
+  deSpan.textContent = de;
+  efSpan.textContent = ef;
+
+  const af = Math.sqrt(Math.pow(bc + de, 2) + Math.pow(ef, 2));
+  const respostaCorreta = parseFloat(af.toFixed(2));
 
   btnVerificar.addEventListener("click", () => {
     const respostaUsuario = respostaInput.value.trim().replace(",", ".");
 
-    if (parseFloat(respostaUsuario).toFixed(2) === respostaCorreta) {
+    if (parseFloat(respostaUsuario).toFixed(2) === respostaCorreta.toFixed(2)) {
       feedback.textContent = "✔️ Resposta correta! Vamos para a próxima estação.";
       feedback.style.color = "green";
 
