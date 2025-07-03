@@ -3,35 +3,30 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Estação 4 - Caminho mais curto</title>
-  <link rel="stylesheet" href="style.css" />
+  <title>Estação 4 - Caminho Mais Curto</title>
+  <link rel="stylesheet" href="../style.css" />
 </head>
 <body>
   <div class="container">
-    <h1 id="tituloEstacao">Estação 4</h1>
+    <h1>Estação 4 - Caminho Mais Curto</h1>
     <p id="coordenadaEstacao">Coordenada: (13, 8.5)</p>
 
-    <div id="descricaoEstacao">
-      <p>
-        Uma pessoa caminha no pátio da escola saindo do ponto <strong>A</strong> até o ponto <strong>F</strong>, contornando obstáculos fixos.
-      </p>
-      <p>
-        Ela percorre os seguintes caminhos: <strong>AB = 14 m</strong>, <strong>CD = 10 m</strong>, <strong>EF = 7 m</strong>.
-      </p>
-      <p>
-        Sabendo que os pontos <strong>A</strong>, <strong>D</strong> e <strong>F</strong> são colineares, qual seria a <strong>distância mais curta possível</strong> entre A e F (em linha reta), em metros?
-      </p>
-    </div>
+    <p>
+      Uma pessoa caminha no pátio da escola saindo do ponto <strong>A</strong> até o ponto <strong>F</strong>, caminhando em um terreno plano e sem obstáculos.<br><br>
+    </p>
+   
+    <p>
+      Sabendo que os pontos <strong>A</strong>, <strong>D</strong> e <strong>E</strong> são colineares (formam uma linha reta), determine a distância mais curta possível entre A e F (em linha reta), com duas casas decimais.
+    </p>
 
-    <label for="resposta">Digite sua resposta:</label>
-    <input type="number" id="resposta" step="0.01">
+    <label for="resposta">Digite sua resposta (em metros):</label>
+    <input type="text" id="resposta" />
+    <p><strong>Dica:</strong> Use o Teorema de Pitágoras. Arredonde para duas casas decimais.</p>
+
     <button id="btnVerificar">Verificar</button>
     <p id="feedback"></p>
 
-    <!-- Caso precise mostrar algo dinâmico -->
-    <p style="display:none">Ângulo sorteado: <span id="anguloTexto"></span></p>
+    <script src="estacao4.js"></script>
   </div>
-
-  <script src="estacao4.js"></script>
 </body>
 </html>

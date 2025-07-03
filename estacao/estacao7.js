@@ -23,19 +23,26 @@ document.addEventListener("DOMContentLoaded", () => {
     { nome: "Estação 9", arquivo: "estacao9.html" }
   ];
 
-  // cordas pequenas, poste baixo
+  const alturaPoste = 2.5;
+
   const opcoes = [
-    { corda1: 2.5, corda2: 3 },
-    { corda1: 3, corda2: 4 },
-    { corda1: 2.8, corda2: 3.2 },
-    { corda1: 3.5, corda2: 3.8 },
-    { corda1: 2.6, corda2: 2.9 }
+    { corda1: 3.2, corda2: 4 },
+    { corda1: 3.0, corda2: 3.6 },
+    { corda1: 2.9, corda2: 3.4 },
+    { corda1: 3.1, corda2: 3.7 },
+    { corda1: 3.3, corda2: 4.1 }
   ];
 
   const sorteada = opcoes[Math.floor(Math.random() * opcoes.length)];
   const h1 = sorteada.corda1;
   const h2 = sorteada.corda2;
-  const distanciaBC = Math.sqrt(h1 * h1 + h2 * h2);
+
+  // Calcular as bases dos triângulos (AB e AC)
+  const base1 = Math.sqrt(h1 ** 2 - alturaPoste ** 2);
+  const base2 = Math.sqrt(h2 ** 2 - alturaPoste ** 2);
+
+  // Calcular a distância entre B e C no chão
+  const distanciaBC = Math.sqrt(base1 ** 2 + base2 ** 2);
   const distanciaEsperada = parseFloat(distanciaBC.toFixed(2));
 
   corda1Span.textContent = h1;
